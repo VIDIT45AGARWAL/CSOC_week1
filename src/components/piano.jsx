@@ -3,6 +3,13 @@ import React, { useEffect, useState } from 'react'
 const piano = () => {
 
     const [activekey, SetactiveKey]= useState([])
+    const [pressedkey, SetPressedKey] =useState(" ")
+
+    const [isRecording, setIsRecording] = useState(false)
+    const [recordedNotes, setRecordedNotes] = useState([])
+    const [startTime , setStartTime]  =useState(null)
+
+    const [isPlaying, setIsPlaying] =useState(false)
 
 
     const notes = {
@@ -36,17 +43,26 @@ const piano = () => {
         if(notes[key]){
             notes[key].currentTime =0
             notes[key].play()
+            
         }
+        
     }
 
+    const notesRecord = (key) =>{
+            if(isRecording && notes[key] && startTime){
+                const timestamp = Date.now() - startTime
+                setRecordedNotes(prev=>[...prev, {key, timestamp}]
+                )
+            }
+    }
 
     useEffect(()=>{
         const handleKeyDown =(e) =>{
             const key=e.key.toLowerCase()
-
+            console.log("key pressed", key, "isRecording", isRecording)
             const keyMap = {
                 'a': 'a',
-                'w': 'w',
+                'w': 'w',   
                 's': 's',
                 'e': 'e',
                 'd': 'd',
@@ -73,7 +89,11 @@ const piano = () => {
             const mkey = keyMap[key]
             if(mkey){
                 playNotes(mkey)
+                if(isRecording){
+                    notesRecord(mkey)
+                }
                 SetactiveKey(prev => prev.includes(mkey)? prev : [...prev, mkey])
+                SetPressedKey(mkey)
             }
         }
 
@@ -110,8 +130,7 @@ const piano = () => {
                     if(mkey){
                         SetactiveKey(prev => prev.filter(k=> k !== mkey))
                     }
-
-                    }
+                }
 
 
         window.addEventListener('keydown',handleKeyDown)
@@ -121,19 +140,62 @@ const piano = () => {
             window.removeEventListener('keydown',handleKeyDown)
             window.removeEventListener('keyup', handleKeyUp)
         }
-    }, [])
+    }, [isRecording])
 
     
 
     const handlekeyclicks=(note)=>{
         playNotes(note)
+        if(isRecording){
+            notesRecord(note)
+        }
+        SetPressedKey(note)
     }
 
     const isActive = (key) => activekey.includes(key)
 
 
+
+    const startstoprecording =()=>{
+        if(!isRecording){
+            setStartTime(Date.now())
+            setRecordedNotes([])
+            setIsRecording(true)
+        }
+        else{
+            setIsRecording(false)
+            setStartTime(null)
+        }
+    }
+   
+
+    const playBack = () =>{
+        if(recordedNotes.length === 0) return
+
+        setIsPlaying(true)
+
+        recordedNotes.forEach(note => {
+            setTimeout(()=>{
+                playNotes(note.key)
+            }, note.timestamp)
+        })
+
+
+        const lastNote = recordedNotes[recordedNotes.length-1]
+        setTimeout(()=>{
+            setIsPlaying(false)
+        }, lastNote.timestamp + 100)
+    }
+
+
   return (
-    // Piano Container
+    <>
+    <div className='flex flex-col justify-center items-center'>
+    <div className='flex justify-center pt-8 bg-white font-bold text-5xl w-30 h-30 border-8 border-amber-300'>
+            {pressedkey.toUpperCase()}
+    </div>
+
+    {/* Piano Container */}
     <div className="flex relative">
         <div className="relative">
             <div id='a' className={`border-2 border-gray-500 w-12 h-48 rounded-b-lg active:bg-pink-300 relative cursor-pointer hover:bg-yellow-200 transition-colors duration-100 ${isActive('a') ? 'bg-pink-300' : 'bg-white'}`}  onClick={()=> handlekeyclicks('a')}>
@@ -240,6 +302,16 @@ const piano = () => {
         </div>
 
     </div>
+
+    {/* recorder */}
+        <div className='flex justify-between space-x-10'>
+                <div className='text-white font-bold cursor-pointer' onClick={startstoprecording}>
+                    {isRecording ? 'Stop Recording' : 'Start Recording'}
+                </div>
+                <div className='text-white font-bold cursor-pointer' onClick={playBack}>Playback</div>
+        </div>
+    </div>
+    </>
   )
 }
 
