@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react';
 
 const piano = ({darkMode}) => {
 
@@ -11,48 +11,83 @@ const piano = ({darkMode}) => {
 
     const [isPlaying, setIsPlaying] =useState(false)
 
+    const [noteBuffers, setNoteBuffers] =useState({})
+    const [isLoaded, setIsLoaded] =useState(false)
+    const audioContext =useRef(null)
 
-    const notes = {
-        'a': new Audio('/sounds/key01.mp3'),
-        'w': new Audio('/sounds/key02.mp3'),
-        's': new Audio('/sounds/key03.mp3'),
-        'e': new Audio('/sounds/key04.mp3'),
-        'd': new Audio('/sounds/key05.mp3'),
-        'f': new Audio('/sounds/key06.mp3'),
-        'r': new Audio('/sounds/key07.mp3'),
-        'g': new Audio('/sounds/key08.mp3'),
-        't': new Audio('/sounds/key09.mp3'),
-        'h': new Audio('/sounds/key10.mp3'),
-        'y': new Audio('/sounds/key11.mp3'),
-        'j': new Audio('/sounds/key12.mp3'),
-        'k': new Audio('/sounds/key13.mp3'),
-        'i': new Audio('/sounds/key14.mp3'),
-        'l': new Audio('/sounds/key15.mp3'),
-        'o': new Audio('/sounds/key16.mp3'),
-        ';': new Audio('/sounds/key17.mp3'),
-        "'": new Audio('/sounds/key18.mp3'),
-        ']': new Audio('/sounds/key19.mp3'),
-        'ent': new Audio('/sounds/key20.mp3'),
-        '\\': new Audio('/sounds/key21.mp3'),
-        '4': new Audio('/sounds/key22.mp3'),
-        '7': new Audio('/sounds/key23.mp3'),
-        '5': new Audio('/sounds/key24.mp3'),
+
+    const noteFiles = {
+        'a': '/sounds/key01.mp3',
+        'w': '/sounds/key02.mp3',
+        's': '/sounds/key03.mp3',
+        'e': '/sounds/key04.mp3',
+        'd': '/sounds/key05.mp3',
+        'f': '/sounds/key06.mp3',
+        'r': '/sounds/key07.mp3',
+        'g': '/sounds/key08.mp3',
+        't': '/sounds/key09.mp3',
+        'h': '/sounds/key10.mp3',
+        'y': '/sounds/key11.mp3',
+        'j': '/sounds/key12.mp3',
+        'k': '/sounds/key13.mp3',
+        'i': '/sounds/key14.mp3',
+        'l': '/sounds/key15.mp3',
+        'o': '/sounds/key16.mp3',
+        ';': '/sounds/key17.mp3',
+        "'": '/sounds/key18.mp3',
+        ']': '/sounds/key19.mp3',
+        'ent': '/sounds/key20.mp3',
+        '\\': '/sounds/key21.mp3',
+        '4': '/sounds/key22.mp3',
+        '7': '/sounds/key23.mp3',
+        '5': '/sounds/key24.mp3',
     };
 
-    const playNotes = (key) =>{
-        if(notes[key]){
-            notes[key].currentTime =0
-            notes[key].play()
-            
+
+    useEffect(()=>{
+        audioContext.current= new AudioContext();
+        const loadBuffers = async ()=>{
+            const buffers ={};
+            try{
+                for(const [key, file] of Object.entries(noteFiles)){
+                    const response = await fetch(file)
+                    const arrayBuffer = await response.arrayBuffer()
+                    const audioBuffer = await audioContext.current.decodeAudioData(arrayBuffer)
+                    buffers[key] = audioBuffer
+                }
+                setNoteBuffers(buffers)
+                setIsLoaded(true)
+            }
+            catch(error){
+                console.error('Error in loading audio buffers:', error)
+            }
         }
-        
+        loadBuffers()
+
+        return() =>{
+            if(audioContext.current){
+                audioContext.current.close()
+            }
+        }
+    },[])
+
+    const playNotes = (key) =>{
+        const buffer =noteBuffers[key]
+        if(buffer && audioContext.current){
+            const source = audioContext.current.createBufferSource()
+            source.buffer=buffer
+            source.connect(audioContext.current.destination)
+            source.start()
+        }
+        else{
+            console.warn(`No buffer found for: ${key}`)
+        }
     }
 
     const notesRecord = (key) =>{
-            if(isRecording && notes[key] && startTime){
+            if(isRecording && startTime){
                 const timestamp = Date.now() - startTime
-                setRecordedNotes(prev=>[...prev, {key, timestamp}]
-                )
+                setRecordedNotes((prev)=>[...prev, {key, timestamp}])
             }
     }
 
@@ -140,7 +175,7 @@ const piano = ({darkMode}) => {
             window.removeEventListener('keydown',handleKeyDown)
             window.removeEventListener('keyup', handleKeyUp)
         }
-    }, [isRecording])
+    }, [isRecording, noteBuffers])
 
     
 
@@ -170,21 +205,107 @@ const piano = ({darkMode}) => {
    
 
     const playBack = () =>{
-        if(recordedNotes.length === 0) return
+        if(recordedNotes.length === 0 || !isLoaded) return
 
         setIsPlaying(true)
-
+        const startTime=audioContext.current.currentTime
         recordedNotes.forEach(note => {
-            setTimeout(()=>{
-                playNotes(note.key)
-            }, note.timestamp)
+            const buffer =noteBuffers[note.key]
+            if(buffer){
+                const source= audioContext.current.createBufferSource()
+                source.buffer=buffer
+                source.connect(audioContext.current.destination)
+                source.start(startTime + note.timestamp/1000)
+            }
+        })
+        const lastNote = recordedNotes[recordedNotes.length-1]
+        const lastNoteduration= noteBuffers[lastNote.key]?.duration ||1
+        const endtime= startTime+lastNote.timestamp/1000 + lastNoteduration
+        const delay= (endtime-audioContext.current.currentTime)*1000
+        setTimeout(()=> setIsPlaying(false), delay)
+    }
+
+    const audioBuffertoWav = (buffer) =>{
+        const numOfChan =buffer.numberOfChannels
+        const length =buffer.length*numOfChan*2 +44
+        const bufferArray=new ArrayBuffer(length)
+        const view =new DataView(bufferArray)
+        const channels=[]
+        let offset=0
+        let pos=0
+
+        const setUint16=(data)=>{
+            view.setUint16(pos,data,true)
+            pos+=2
+        }
+        const setUint32=(data)=>{
+            view.setUint32(pos, data, true)
+            pos+=4
+        }
+
+        setUint32(0x46464952); 
+        setUint32(length - 8); 
+        setUint32(0x45564157); 
+        setUint32(0x20746d66); 
+        setUint32(16); 
+        setUint16(1); 
+        setUint16(numOfChan);
+        setUint32(buffer.sampleRate);
+        setUint32(buffer.sampleRate * numOfChan * 2); 
+        setUint16(numOfChan * 2); 
+        setUint16(16); 
+        setUint32(0x61746164); 
+        setUint32(length - pos - 4);
+
+        for(let i=0;i<buffer.numberOfChannels;i++){
+            channels.push(buffer.getChannelData(i))
+        }
+        while(pos<length){
+            for(let i=0;i<numOfChan;i++){
+                let sample=channels[i][offset]
+                sample=Math.max(-1, Math.min(1, sample))
+                sample=(sample<0? sample* 0x8000 : sample * 0x7FFF) | 0
+                view.setInt16(pos, sample, true)
+                pos+=2
+            }
+            offset++
+        }
+        return bufferArray
+    }
+
+
+    const downloadPlayback = async() =>{
+        if(!isLoaded || recordedNotes.length===0) return
+
+        const totalDuration =Math.max(...recordedNotes.map(note=>
+            note.timestamp/1000 + (noteBuffers[note.key]?.duration ||1)
+        ))
+
+        const offlineContext = new OfflineAudioContext(
+            noteBuffers['a'].numberOfChannels,
+            totalDuration*noteBuffers['a'].sampleRate,
+            noteBuffers['a'].sampleRate
+        )
+
+        recordedNotes.forEach(note =>{
+            const buffer = noteBuffers[note.key]
+            if(buffer){
+                const source=offlineContext.createBufferSource()
+                source.buffer=buffer
+                source.connect(offlineContext.destination)
+                source.start(note.timestamp/1000)
+            }
         })
 
-
-        const lastNote = recordedNotes[recordedNotes.length-1]
-        setTimeout(()=>{
-            setIsPlaying(false)
-        }, lastNote.timestamp + 100)
+        const renderedBuffer = await offlineContext.startRendering();
+        const wavData = audioBuffertoWav(renderedBuffer);
+        const blob = new Blob([wavData], { type: 'audio/wav' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'playback.wav';
+        a.click();
+        URL.revokeObjectURL(url); 
     }
 
 
@@ -295,11 +416,11 @@ const piano = ({darkMode}) => {
 
     <div>
         <div className='flex justify-between space-x-10 mt-25'>
-                <div className={`px-4 py-2 rounded-md font-bold cursor-pointer transition-color ${isRecording ? 'bg-white text-red-600 shadow-[0_0_10px_2px_rgba(255,255,255,0.8)] hover:shadow-[0_0_15px_3px_rgba(255,255,255,0.9)]' : 'bg-gray-200 text-gray-800 shadow-[0_0_10px_2px_rgba(192,192,192,0.6)] hover:shadow-[0_0_15px_3px_rgba(192,192,192,0.8)]'} flex items-center`} onClick={startstoprecording}>
-                    {isRecording ? (<><span className='inline-block w-3 h-3 bg-red-600 rounded-full mr-2 animate-pulse'></span> Stop Recording</>) : "Start Recording"}
+                <div className={`px-4 py-2 rounded-md text-[9px] sm:text-[13px] md:text-[16px] font-bold cursor-pointer transition-color ${isRecording ? 'bg-white text-red-600 shadow-[0_0_10px_2px_rgba(255,255,255,0.8)] hover:shadow-[0_0_15px_3px_rgba(255,255,255,0.9)]' : 'bg-gray-200 text-gray-800 shadow-[0_0_10px_2px_rgba(192,192,192,0.6)] hover:shadow-[0_0_15px_3px_rgba(192,192,192,0.8)]'} flex items-center`} onClick={startstoprecording}>
+                    {isRecording ? (<><span className='inline-block w-3 h-3  bg-red-600 rounded-full mr-2 animate-pulse'></span> Stop Recording</>) : "Start Recording"}
                 </div>
 
-                <div className={`px-4 py-2 rounded-md font-bold cursor-pointer transition-colors flex items-center ${isPlaying ? 'bg-amber-400 text-white shadow-[0_0_15px_3px_rgba(245,158,11,0.7)]': 'bg-amber-400 text-white shadow-[0_0_10px_2px_rgba(245,158,11,0.5)] hover:shadow-[0_0_15px_3px_rgba(245,158,11,0.7)]'}`} onClick={playBack}>
+                <div className={`px-4 py-2 text-[9px] sm:text-[13px] md:text-[16px] rounded-md font-bold cursor-pointer transition-colors flex items-center ${isPlaying ? 'bg-amber-400 text-white shadow-[0_0_15px_3px_rgba(245,158,11,0.7)]': 'bg-amber-400 text-white shadow-[0_0_10px_2px_rgba(245,158,11,0.5)] hover:shadow-[0_0_15px_3px_rgba(245,158,11,0.7)]'}`} onClick={playBack}>
                     {isPlaying ? (
                         <svg 
                         xmlns="http://www.w3.org/2000/svg" 
@@ -329,11 +450,12 @@ const piano = ({darkMode}) => {
                     )}
                     Playback
                     </div>
+
+                    <div className={`px-4 py-2 text-[9px] sm:text-[13px] md:text-[16px] rounded-md font-bold cursor-pointer transition-colors flex items-center ${recordedNotes.length === 0 || !isLoaded? 'bg-gray-400 text-white cursor-not-allowed' : 'bg-blue-500 text-white shadow-[0_0_15px_3px_rgba(59,130,246,0.8)] hover:shadow-[0_0_20px_4px_rgba(59,130,246,0.9)]'}`} onClick={downloadPlayback}>
+                        Download
+                    </div>
                 </div>
-
-    </div>
-
-        
+            </div>
         </div>
     </>
   )
