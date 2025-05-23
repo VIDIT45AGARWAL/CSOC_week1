@@ -21,9 +21,43 @@ const Bgeffect = ({darkMode}) => {
                 <p className='text-base mt-8 lg:text-lg text-center xl:text-left text-neutral-600 dark:text-neutral-300 max-w-100 font-light '>
                   A 24 keys virtual piano with visual feedback capable of recording tunes...
                 </p>
+
+                <div className='mt-13 w-80 mb-8'>
+                  <h2 className='text-amber-400 text-2xl font-bold'>Instructions:</h2>
+                  <div className='flex flex-row space-x-3'>
+                    <div>
+                        <i className='bx bxs-chevrons-right' style={{color: '#f8a407'}}  ></i>
+                    </div>
+                    <div>
+                        <p className='text-neutral-700 dark:text-neutral-200 color-transition'>
+                          Piano can be played both from clicks and keyboards
+                        </p>
+                    </div>
+                  </div>
+                  <div className='flex flex-row space-x-3'>
+                    <div>
+                      <i className='bx bxs-chevrons-right' style={{color: '#f8a407'}}  ></i>
+                    </div>
+                    <div>
+                      <p className='text-neutral-700 dark:text-neutral-200 color-transition'>
+                        For darkmode use the button at the top corner
+                      </p>
+                    </div>
+                  </div>
+                  <div className='flex flex-row space-x-3'>
+                    <div>
+                      <i className='bx bxs-chevrons-right' style={{color: '#f8a407'}}  ></i>
+                    </div>
+                    <div>
+                      <p className='text-neutral-700 dark:text-neutral-200 color-transition'>
+                        To record your tune use the Start Recording button and then play your tune, when you are done Stop the recording and you can listen to your recorded tune using the Playback button
+                      </p>
+                    </div>
+                  </div>
+                </div>
                 </div>   
                 
-                  <div className='flex flex-col relative bg-transparent h-150 w-100 sm:w-120 md:w-180 gb:w-220 xl:ml-65 border-8 border-transparent shadow-[0_0_40px_6px_rgba(251,191,36,0.8)] rounded-2xl' >
+                  <div className='flex flex-col relative bg-white dark:bg-neutral-900 h-150 w-100 sm:w-120 md:w-180 gb:w-220 xl:ml-50 border-8 border-transparent shadow-[0_0_40px_6px_rgba(251,191,36,0.8)] rounded-2xl' >
                     <Piano darkMode={darkMode}/> 
                   </div>
             </div>
