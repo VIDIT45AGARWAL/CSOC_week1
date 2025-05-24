@@ -420,7 +420,7 @@ const piano = ({darkMode}) => {
                     {isRecording ? (<><span className='inline-block w-3 h-3  bg-red-600 rounded-full mr-2 animate-pulse'></span> Stop Recording</>) : "Start Recording"}
                 </div>
 
-                <div className={`px-4 py-2 text-[9px] sm:text-[13px] md:text-[16px] rounded-md font-bold cursor-pointer transition-colors flex items-center ${isPlaying ? 'bg-amber-400 text-white shadow-[0_0_15px_3px_rgba(245,158,11,0.7)]': 'bg-amber-400 text-white shadow-[0_0_10px_2px_rgba(245,158,11,0.5)] hover:shadow-[0_0_15px_3px_rgba(245,158,11,0.7)]'}`} onClick={playBack}>
+                <div className={`px-4 py-2 text-[9px] sm:text-[13px] md:text-[16px] rounded-md font-bold cursor-pointer transition-colors flex items-center ${isPlaying ? 'bg-amber-400 text-white shadow-[0_0_15px_3px_rgba(245,158,11,0.7)]': 'bg-amber-400 text-white shadow-[0_0_10px_2px_rgba(245,158,11,0.5)] hover:shadow-[0_0_15px_3px_rgba(245,158,11,0.7)]'}`} onClick={()=>{if(!isPlaying) playBack()}}>
                     {isPlaying ? (
                         <svg 
                         xmlns="http://www.w3.org/2000/svg" 
