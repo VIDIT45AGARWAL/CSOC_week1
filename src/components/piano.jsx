@@ -319,95 +319,95 @@ const piano = ({darkMode}) => {
     {/* Piano Container */}
     <div className="mt-18 flex relative">
         <div className="relative">
-            <div id='a' className={`border-2 border-gray-500 w-6 h-24 sm:w-8 sm:h-32 md:w-12 md:h-48 rounded-b-lg active:bg-pink-300 relative cursor-pointer transition-colors duration-100 ${isActive('a') ? 'bg-pink-300 shadow-[0_0_15px_2px_rgba(236,72,153,0.8)]' : 'bg-white hover:bg-amber-300'}`} onClick={()=> handlekeyclicks('a')}>
+            <div id='a' className={`border-2 border-gray-500 w-6 h-24 sm:w-8 sm:h-32 md:w-12 md:h-48 rounded-b-lg active:bg-pink-300 active:shadow-[0_0_15px_2px_rgba(236,72,153,0.8)] relative cursor-pointer transition-colors duration-100 ${isActive('a') ? 'bg-pink-300 shadow-[0_0_15px_2px_rgba(236,72,153,0.8)]' : 'bg-white hover:bg-amber-300'}`} onClick={()=> handlekeyclicks('a')}>
                 <div className='absolute bottom-0 left-1 text-[10px] md:text-[16px]'>A</div>
             </div>
-            <div id='w' className={`absolute z-10 rounded-b-lg w-4 h-18 sm:w-6 sm:h-24 md:w-8 md:h-32 top-0 -right-3 active:bg-pink-300 cursor-pointer transition-colors duration-100 ${isActive('w') ? 'bg-pink-300 shadow-[0_0_15px_2px_rgba(236,72,153,0.8)]' : 'bg-black hover:bg-amber-300'}`} onClick={()=> handlekeyclicks('w')}>
+            <div id='w' className={`absolute z-10 rounded-b-lg w-4 h-18 sm:w-6 sm:h-24 md:w-8 md:h-32 top-0 -right-3 active:bg-pink-300 active:shadow-[0_0_15px_2px_rgba(236,72,153,0.8)] cursor-pointer transition-colors duration-100 ${isActive('w') ? 'bg-pink-300 shadow-[0_0_15px_2px_rgba(236,72,153,0.8)]' : 'bg-black hover:bg-amber-300'}`} onClick={()=> handlekeyclicks('w')}>
                 <div className='text-white text-[10px] md:text-[16px] absolute bottom-0 left-1'>W</div>
             </div>
         </div>
         <div className="relative">
-            <div id='s' className={`border-2 border-gray-500 w-6 h-24 sm:w-8 sm:h-32 md:w-12 md:h-48 rounded-b-lg active:bg-pink-300 relative cursor-pointer transition-colors duration-100 ${isActive('s') ? 'bg-pink-300 shadow-[0_0_15px_2px_rgba(236,72,153,0.8)]' : 'bg-white hover:bg-amber-300'}`} onClick={()=> handlekeyclicks('s')}>
+            <div id='s' className={`border-2 border-gray-500 w-6 h-24 sm:w-8 sm:h-32 md:w-12 md:h-48 rounded-b-lg active:bg-pink-300 active:shadow-[0_0_15px_2px_rgba(236,72,153,0.8)] relative cursor-pointer transition-colors duration-100 ${isActive('s') ? 'bg-pink-300 shadow-[0_0_15px_2px_rgba(236,72,153,0.8)]' : 'bg-white hover:bg-amber-300'}`} onClick={()=> handlekeyclicks('s')}>
                 <div className='absolute bottom-0 left-1 text-[10px] md:text-[16px]'>S</div>
             </div>
-            <div id='e' className={`absolute z-10 rounded-b-lg w-4 h-18 sm:w-6 sm:h-24 md:w-8 md:h-32 top-0 -right-3 active:bg-pink-300 cursor-pointer transition-colors duration-100 ${isActive('e') ? 'bg-pink-300 shadow-[0_0_15px_2px_rgba(236,72,153,0.8)]' : 'bg-black hover:bg-amber-300'}`} onClick={()=> handlekeyclicks('e')}>
+            <div id='e' className={`absolute z-10 rounded-b-lg w-4 h-18 sm:w-6 sm:h-24 md:w-8 md:h-32 top-0 -right-3 active:bg-pink-300 active:shadow-[0_0_15px_2px_rgba(236,72,153,0.8)] cursor-pointer transition-colors duration-100 ${isActive('e') ? 'bg-pink-300 shadow-[0_0_15px_2px_rgba(236,72,153,0.8)]' : 'bg-black hover:bg-amber-300'}`} onClick={()=> handlekeyclicks('e')}>
                 <div className='text-white text-[10px] md:text-[16px] absolute bottom-0 left-1'>E</div>
             </div>
         </div>
-        <div id='d' className={`border-2 border-gray-500 w-6 h-24 sm:w-8 sm:h-32 md:w-12 md:h-48 rounded-b-lg active:bg-pink-300 relative cursor-pointer transition-colors duration-100 ${isActive('d') ? 'bg-pink-300 shadow-[0_0_15px_2px_rgba(236,72,153,0.8)]' : 'bg-white hover:bg-amber-300'}`} onClick={()=> handlekeyclicks('d')}>
+        <div id='d' className={`border-2 border-gray-500 w-6 h-24 sm:w-8 sm:h-32 md:w-12 md:h-48 rounded-b-lg active:bg-pink-300 active:shadow-[0_0_15px_2px_rgba(236,72,153,0.8)] relative cursor-pointer transition-colors duration-100 ${isActive('d') ? 'bg-pink-300 shadow-[0_0_15px_2px_rgba(236,72,153,0.8)]' : 'bg-white hover:bg-amber-300'}`} onClick={()=> handlekeyclicks('d')}>
             <div className='absolute bottom-0 left-1 text-[10px] md:text-[16px]'>D</div>
         </div>
         <div className="relative">
-            <div id='f' className={`border-2 border-gray-500 w-6 h-24 sm:w-8 sm:h-32 md:w-12 md:h-48 rounded-b-lg active:bg-pink-300 relative cursor-pointer transition-colors duration-100 ${isActive('f') ? 'bg-pink-300 shadow-[0_0_15px_2px_rgba(236,72,153,0.8)]' : 'bg-white hover:bg-amber-300'}`} onClick={()=> handlekeyclicks('f')}>
+            <div id='f' className={`border-2 border-gray-500 w-6 h-24 sm:w-8 sm:h-32 md:w-12 md:h-48 rounded-b-lg active:bg-pink-300 active:shadow-[0_0_15px_2px_rgba(236,72,153,0.8)] relative cursor-pointer transition-colors duration-100 ${isActive('f') ? 'bg-pink-300 shadow-[0_0_15px_2px_rgba(236,72,153,0.8)]' : 'bg-white hover:bg-amber-300'}`} onClick={()=> handlekeyclicks('f')}>
                 <div className='absolute bottom-0 left-1 text-[10px] md:text-[16px]'>F</div>
             </div>
-            <div id='r' className={`absolute z-10 rounded-b-lg w-4 h-18 sm:w-6 sm:h-24 md:w-8 md:h-32 top-0 -right-3 active:bg-pink-300 cursor-pointer transition-colors duration-100 ${isActive('r') ? 'bg-pink-300 shadow-[0_0_15px_2px_rgba(236,72,153,0.8)]' : 'bg-black hover:bg-amber-300'}`} onClick={()=> handlekeyclicks('r')}>
+            <div id='r' className={`absolute z-10 rounded-b-lg w-4 h-18 sm:w-6 sm:h-24 md:w-8 md:h-32 top-0 -right-3 active:bg-pink-300 active:shadow-[0_0_15px_2px_rgba(236,72,153,0.8)] cursor-pointer transition-colors duration-100 ${isActive('r') ? 'bg-pink-300 shadow-[0_0_15px_2px_rgba(236,72,153,0.8)]' : 'bg-black hover:bg-amber-300'}`} onClick={()=> handlekeyclicks('r')}>
                 <div className='text-white text-[10px] md:text-[16px] absolute bottom-0 left-1'>R</div>
             </div>
         </div>
         <div className="relative">
-            <div id='g' className={`border-2 border-gray-500 w-6 h-24 sm:w-8 sm:h-32 md:w-12 md:h-48 rounded-b-lg active:bg-pink-300 relative cursor-pointer transition-colors duration-100 ${isActive('g') ? 'bg-pink-300 shadow-[0_0_15px_2px_rgba(236,72,153,0.8)]' : 'bg-white hover:bg-amber-300'}`} onClick={()=> handlekeyclicks('g')}>
+            <div id='g' className={`border-2 border-gray-500 w-6 h-24 sm:w-8 sm:h-32 md:w-12 md:h-48 rounded-b-lg active:bg-pink-300 active:shadow-[0_0_15px_2px_rgba(236,72,153,0.8)] relative cursor-pointer transition-colors duration-100 ${isActive('g') ? 'bg-pink-300 shadow-[0_0_15px_2px_rgba(236,72,153,0.8)]' : 'bg-white hover:bg-amber-300'}`} onClick={()=> handlekeyclicks('g')}>
                 <div className='absolute bottom-0 left-1 text-[10px] md:text-[16px]'>G</div>
             </div>
-            <div id='t' className={`absolute z-10 rounded-b-lg w-4 h-18 sm:w-6 sm:h-24 md:w-8 md:h-32 top-0 -right-3 active:bg-pink-300 cursor-pointer transition-colors duration-100 ${isActive('t') ? 'bg-pink-300 shadow-[0_0_15px_2px_rgba(236,72,153,0.8)]' : 'bg-black hover:bg-amber-300'}`} onClick={()=> handlekeyclicks('t')}>
+            <div id='t' className={`absolute z-10 rounded-b-lg w-4 h-18 sm:w-6 sm:h-24 md:w-8 md:h-32 top-0 -right-3 active:bg-pink-300 active:shadow-[0_0_15px_2px_rgba(236,72,153,0.8)] cursor-pointer transition-colors duration-100 ${isActive('t') ? 'bg-pink-300 shadow-[0_0_15px_2px_rgba(236,72,153,0.8)]' : 'bg-black hover:bg-amber-300'}`} onClick={()=> handlekeyclicks('t')}>
                 <div className='text-white text-[10px] md:text-[16px] absolute bottom-0 left-1'>T</div>
             </div>
         </div>
         <div className="relative">
-            <div id='h' className={`border-2 border-gray-500 w-6 h-24 sm:w-8 sm:h-32 md:w-12 md:h-48 rounded-b-lg active:bg-pink-300 relative cursor-pointer transition-colors duration-100 ${isActive('h') ? 'bg-pink-300 shadow-[0_0_15px_2px_rgba(236,72,153,0.8)]' : 'bg-white hover:bg-amber-300'}`} onClick={()=> handlekeyclicks('h')}>
+            <div id='h' className={`border-2 border-gray-500 w-6 h-24 sm:w-8 sm:h-32 md:w-12 md:h-48 rounded-b-lg active:bg-pink-300 active:shadow-[0_0_15px_2px_rgba(236,72,153,0.8)] relative cursor-pointer transition-colors duration-100 ${isActive('h') ? 'bg-pink-300 shadow-[0_0_15px_2px_rgba(236,72,153,0.8)]' : 'bg-white hover:bg-amber-300'}`} onClick={()=> handlekeyclicks('h')}>
                 <div className='absolute bottom-0 left-1 text-[10px] md:text-[16px]'>H</div>
             </div>
-            <div id='y' className={`absolute z-10 rounded-b-lg w-4 h-18 sm:w-6 sm:h-24 md:w-8 md:h-32 top-0 -right-3 active:bg-pink-300 cursor-pointer transition-colors duration-100 ${isActive('y') ? 'bg-pink-300 shadow-[0_0_15px_2px_rgba(236,72,153,0.8)]' : 'bg-black hover:bg-amber-300'}`} onClick={()=> handlekeyclicks('y')}>
+            <div id='y' className={`absolute z-10 rounded-b-lg w-4 h-18 sm:w-6 sm:h-24 md:w-8 md:h-32 top-0 -right-3 active:bg-pink-300 active:shadow-[0_0_15px_2px_rgba(236,72,153,0.8)] cursor-pointer transition-colors duration-100 ${isActive('y') ? 'bg-pink-300 shadow-[0_0_15px_2px_rgba(236,72,153,0.8)]' : 'bg-black hover:bg-amber-300'}`} onClick={()=> handlekeyclicks('y')}>
                 <div className='text-white text-[10px] md:text-[16px] absolute bottom-0 left-1'>Y</div>
             </div>
         </div>
-        <div id='j' className={`border-2 border-gray-500 w-6 h-24 sm:w-8 sm:h-32 md:w-12 md:h-48 rounded-b-lg active:bg-pink-300 relative cursor-pointer transition-colors duration-100 ${isActive('j') ? 'bg-pink-300 shadow-[0_0_15px_2px_rgba(236,72,153,0.8)]' : 'bg-white hover:bg-amber-300'}`} onClick={()=> handlekeyclicks('j')}>
+        <div id='j' className={`border-2 border-gray-500 w-6 h-24 sm:w-8 sm:h-32 md:w-12 md:h-48 rounded-b-lg active:bg-pink-300 active:shadow-[0_0_15px_2px_rgba(236,72,153,0.8)] relative cursor-pointer transition-colors duration-100 ${isActive('j') ? 'bg-pink-300 shadow-[0_0_15px_2px_rgba(236,72,153,0.8)]' : 'bg-white hover:bg-amber-300'}`} onClick={()=> handlekeyclicks('j')}>
             <div className='absolute bottom-0 left-1 text-[10px] md:text-[16px]'>J</div>
         </div>
         <div className="relative">
-            <div id='k' className={`border-2 border-gray-500 w-6 h-24 sm:w-8 sm:h-32 md:w-12 md:h-48 rounded-b-lg active:bg-pink-300 relative cursor-pointer transition-colors duration-100 ${isActive('k') ? 'bg-pink-300 shadow-[0_0_15px_2px_rgba(236,72,153,0.8)]' : 'bg-white hover:bg-amber-300'}`} onClick={()=> handlekeyclicks('k')}>
+            <div id='k' className={`border-2 border-gray-500 w-6 h-24 sm:w-8 sm:h-32 md:w-12 md:h-48 rounded-b-lg active:bg-pink-300 active:shadow-[0_0_15px_2px_rgba(236,72,153,0.8)] relative cursor-pointer transition-colors duration-100 ${isActive('k') ? 'bg-pink-300 shadow-[0_0_15px_2px_rgba(236,72,153,0.8)]' : 'bg-white hover:bg-amber-300'}`} onClick={()=> handlekeyclicks('k')}>
                 <div className='absolute bottom-0 left-1 text-[10px] md:text-[16px]'>K</div>
             </div>
-            <div id='i' className={`absolute z-10 rounded-b-lg w-4 h-18 sm:w-6 sm:h-24 md:w-8 md:h-32 top-0 -right-3 active:bg-pink-300 cursor-pointer transition-colors duration-100 ${isActive('i') ? 'bg-pink-300 shadow-[0_0_15px_2px_rgba(236,72,153,0.8)]' : 'bg-black hover:bg-amber-300'}`} onClick={()=> handlekeyclicks('i')}>
+            <div id='i' className={`absolute z-10 rounded-b-lg w-4 h-18 sm:w-6 sm:h-24 md:w-8 md:h-32 top-0 -right-3 active:bg-pink-300 active:shadow-[0_0_15px_2px_rgba(236,72,153,0.8)] cursor-pointer transition-colors duration-100 ${isActive('i') ? 'bg-pink-300 shadow-[0_0_15px_2px_rgba(236,72,153,0.8)]' : 'bg-black hover:bg-amber-300'}`} onClick={()=> handlekeyclicks('i')}>
                 <div className='text-white text-[10px] md:text-[16px] absolute bottom-0 left-1'>I</div>
             </div>
         </div>
         <div className="relative">
-            <div id='l' className={`border-2 border-gray-500 w-6 h-24 sm:w-8 sm:h-32 md:w-12 md:h-48 rounded-b-lg active:bg-pink-300 relative cursor-pointer transition-colors duration-100 ${isActive('l') ? 'bg-pink-300 shadow-[0_0_15px_2px_rgba(236,72,153,0.8)]' : 'bg-white hover:bg-amber-300'}`} onClick={()=> handlekeyclicks('l')}>
+            <div id='l' className={`border-2 border-gray-500 w-6 h-24 sm:w-8 sm:h-32 md:w-12 md:h-48 rounded-b-lg active:bg-pink-300 active:shadow-[0_0_15px_2px_rgba(236,72,153,0.8)] relative cursor-pointer transition-colors duration-100 ${isActive('l') ? 'bg-pink-300 shadow-[0_0_15px_2px_rgba(236,72,153,0.8)]' : 'bg-white hover:bg-amber-300'}`} onClick={()=> handlekeyclicks('l')}>
                 <div className='absolute bottom-0 left-1 text-[10px] md:text-[16px]'>L</div>
             </div>
-            <div id='o' className={`absolute z-10 rounded-b-lg w-4 h-18 sm:w-6 sm:h-24 md:w-8 md:h-32 top-0 -right-3 active:bg-pink-300 cursor-pointer transition-colors duration-100 ${isActive('o') ? 'bg-pink-300 shadow-[0_0_15px_2px_rgba(236,72,153,0.8)]' : 'bg-black hover:bg-amber-300'}`} onClick={()=> handlekeyclicks('o')}>
+            <div id='o' className={`absolute z-10 rounded-b-lg w-4 h-18 sm:w-6 sm:h-24 md:w-8 md:h-32 top-0 -right-3 active:bg-pink-300 active:shadow-[0_0_15px_2px_rgba(236,72,153,0.8)] cursor-pointer transition-colors duration-100 ${isActive('o') ? 'bg-pink-300 shadow-[0_0_15px_2px_rgba(236,72,153,0.8)]' : 'bg-black hover:bg-amber-300'}`} onClick={()=> handlekeyclicks('o')}>
                 <div className='text-white text-[10px] md:text-[16px] absolute bottom-0 left-1'>O</div>
             </div>
         </div>
-        <div id=';' className={`border-2 border-gray-500 w-6 h-24 sm:w-8 sm:h-32 md:w-12 md:h-48 rounded-b-lg active:bg-pink-300 relative cursor-pointer transition-colors duration-100 ${isActive(';') ? 'bg-pink-300 shadow-[0_0_15px_2px_rgba(236,72,153,0.8)]' : 'bg-white hover:bg-amber-300'}`} onClick={()=> handlekeyclicks(';')}>
+        <div id=';' className={`border-2 border-gray-500 w-6 h-24 sm:w-8 sm:h-32 md:w-12 md:h-48 rounded-b-lg active:bg-pink-300 active:shadow-[0_0_15px_2px_rgba(236,72,153,0.8)] relative cursor-pointer transition-colors duration-100 ${isActive(';') ? 'bg-pink-300 shadow-[0_0_15px_2px_rgba(236,72,153,0.8)]' : 'bg-white hover:bg-amber-300'}`} onClick={()=> handlekeyclicks(';')}>
             <div className='absolute bottom-0 left-1 text-[10px] md:text-[16px]'>;</div>
         </div>
         <div className="relative">
-            <div id="'" className={`border-2 border-gray-500 w-6 h-24 sm:w-8 sm:h-32 md:w-12 md:h-48 rounded-b-lg active:bg-pink-300 relative cursor-pointer transition-colors duration-100 ${isActive("'") ? 'bg-pink-300 shadow-[0_0_15px_2px_rgba(236,72,153,0.8)]' : 'bg-white hover:bg-amber-300'}`} onClick={()=> handlekeyclicks("'")}>
+            <div id="'" className={`border-2 border-gray-500 w-6 h-24 sm:w-8 sm:h-32 md:w-12 md:h-48 rounded-b-lg active:bg-pink-300 active:shadow-[0_0_15px_2px_rgba(236,72,153,0.8)] relative cursor-pointer transition-colors duration-100 ${isActive("'") ? 'bg-pink-300 shadow-[0_0_15px_2px_rgba(236,72,153,0.8)]' : 'bg-white hover:bg-amber-300'}`} onClick={()=> handlekeyclicks("'")}>
                 <div className='absolute bottom-0 left-1 text-[10px] md:text-[16px]'>'</div>
             </div>
-            <div id=']' className={`absolute z-10 rounded-b-lg w-4 h-18 sm:w-6 sm:h-24 md:w-8 md:h-32 top-0 -right-3 active:bg-pink-300 cursor-pointer transition-colors duration-100 ${isActive(']') ? 'bg-pink-300 shadow-[0_0_15px_2px_rgba(236,72,153,0.8)]' : 'bg-black hover:bg-amber-300'}`} onClick={()=> handlekeyclicks(']')}>
+            <div id=']' className={`absolute z-10 rounded-b-lg w-4 h-18 sm:w-6 sm:h-24 md:w-8 md:h-32 top-0 -right-3 active:bg-pink-300 active:shadow-[0_0_15px_2px_rgba(236,72,153,0.8)] cursor-pointer transition-colors duration-100 ${isActive(']') ? 'bg-pink-300 shadow-[0_0_15px_2px_rgba(236,72,153,0.8)]' : 'bg-black hover:bg-amber-300'}`} onClick={()=> handlekeyclicks(']')}>
                 <div className='text-white text-[10px] md:text-[16px] absolute bottom-0 left-1'>{']'}</div>
             </div>
         </div>
         <div className="relative">
-            <div id='ent' className={`border-2 border-gray-500 w-6 h-24 sm:w-8 sm:h-32 md:w-12 md:h-48 rounded-b-lg active:bg-pink-300 relative cursor-pointer transition-colors duration-100 ${isActive('ent') ? 'bg-pink-300 shadow-[0_0_15px_2px_rgba(236,72,153,0.8)]' : 'bg-white hover:bg-amber-300'}`} onClick={()=> handlekeyclicks('ent')}>
+            <div id='ent' className={`border-2 border-gray-500 w-6 h-24 sm:w-8 sm:h-32 md:w-12 md:h-48 rounded-b-lg active:bg-pink-300 active:shadow-[0_0_15px_2px_rgba(236,72,153,0.8)] relative cursor-pointer transition-colors duration-100 ${isActive('ent') ? 'bg-pink-300 shadow-[0_0_15px_2px_rgba(236,72,153,0.8)]' : 'bg-white hover:bg-amber-300'}`} onClick={()=> handlekeyclicks('ent')}>
                 <div className='absolute bottom-0 left-1 text-[10px] md:text-[16px]'>ent</div>
             </div>
-            <div id='\\' className={`absolute z-10 rounded-b-lg w-4 h-18 sm:w-6 sm:h-24 md:w-8 md:h-32 top-0 -right-3 active:bg-pink-300 cursor-pointer transition-colors duration-100 ${isActive('\\') ? 'bg-pink-300 shadow-[0_0_15px_2px_rgba(236,72,153,0.8)]' : 'bg-black hover:bg-amber-300'}`} onClick={()=> handlekeyclicks('\\')}>
+            <div id='\\' className={`absolute z-10 rounded-b-lg w-4 h-18 sm:w-6 sm:h-24 md:w-8 md:h-32 top-0 -right-3 active:bg-pink-300 active:shadow-[0_0_15px_2px_rgba(236,72,153,0.8)] cursor-pointer transition-colors duration-100 ${isActive('\\') ? 'bg-pink-300 shadow-[0_0_15px_2px_rgba(236,72,153,0.8)]' : 'bg-black hover:bg-amber-300'}`} onClick={()=> handlekeyclicks('\\')}>
                 <div className='text-white text-[10px] md:text-[16px] absolute bottom-0 left-1'>\</div>
             </div>
         </div>
         <div className="relative">
-            <div id='4' className={`border-2 border-gray-500 w-6 h-24 sm:w-8 sm:h-32 md:w-12 md:h-48 rounded-b-lg active:bg-pink-300 relative cursor-pointer transition-colors duration-100 ${isActive('4') ? 'bg-pink-300 shadow-[0_0_15px_2px_rgba(236,72,153,0.8)]' : 'bg-white hover:bg-amber-300'}`} onClick={()=> handlekeyclicks('4')}>
+            <div id='4' className={`border-2 border-gray-500 w-6 h-24 sm:w-8 sm:h-32 md:w-12 md:h-48 rounded-b-lg active:bg-pink-300 active:shadow-[0_0_15px_2px_rgba(236,72,153,0.8)] relative cursor-pointer transition-colors duration-100 ${isActive('4') ? 'bg-pink-300 shadow-[0_0_15px_2px_rgba(236,72,153,0.8)]' : 'bg-white hover:bg-amber-300'}`} onClick={()=> handlekeyclicks('4')}>
                 <div className='absolute bottom-0 left-1 text-[10px] md:text-[16px]'>4</div>
             </div>
-            <div id='7' className={`absolute z-10 rounded-b-lg w-4 h-18 sm:w-6 sm:h-24 md:w-8 md:h-32 top-0 -right-3 active:bg-pink-300 cursor-pointer transition-colors duration-100 ${isActive('7') ? 'bg-pink-300 shadow-[0_0_15px_2px_rgba(236,72,153,0.8)]' : 'bg-black hover:bg-amber-300'}`} onClick={()=> handlekeyclicks('7')}>
+            <div id='7' className={`absolute z-10 rounded-b-lg w-4 h-18 sm:w-6 sm:h-24 md:w-8 md:h-32 top-0 -right-3 active:bg-pink-300 active:shadow-[0_0_15px_2px_rgba(236,72,153,0.8)] cursor-pointer transition-colors duration-100 ${isActive('7') ? 'bg-pink-300 shadow-[0_0_15px_2px_rgba(236,72,153,0.8)]' : 'bg-black hover:bg-amber-300'}`} onClick={()=> handlekeyclicks('7')}>
                 <div className='text-white text-[10px] md:text-[16px] absolute bottom-0 left-1'>7</div>
             </div>
         </div>
-        <div id='5' className={`border-2 border-gray-500 w-6 h-24 sm:w-8 sm:h-32 md:w-12 md:h-48 rounded-b-lg active:bg-pink-300 relative cursor-pointer transition-colors duration-100 ${isActive('5') ? 'bg-pink-300 shadow-[0_0_15px_2px_rgba(236,72,153,0.8)]' : 'bg-white hover:bg-amber-300'}`} onClick={()=> handlekeyclicks('5')}>
+        <div id='5' className={`border-2 border-gray-500 w-6 h-24 sm:w-8 sm:h-32 md:w-12 md:h-48 rounded-b-lg active:bg-pink-300 active:shadow-[0_0_15px_2px_rgba(236,72,153,0.8)] relative cursor-pointer transition-colors duration-100 ${isActive('5') ? 'bg-pink-300 shadow-[0_0_15px_2px_rgba(236,72,153,0.8)]' : 'bg-white hover:bg-amber-300'}`} onClick={()=> handlekeyclicks('5')}>
             <div className='absolute bottom-0 left-1 text-[10px] md:text-[16px]'>5</div>
         </div>
     </div>
