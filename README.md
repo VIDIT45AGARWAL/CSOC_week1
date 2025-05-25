@@ -1,12 +1,41 @@
-# React + Vite
+# 🎹 Virtual Piano & 🥁 Drum Kit
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+An interactive music web app featuring a 24-key virtual piano and a drum kit — both with visual feedback, recording, playback, and download capabilities. Play your favorite tunes using your keyboard or mouse and switch seamlessly between Piano and Drum modes!
 
-Currently, two official plugins are available:
+## 🚀 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### 🎹 Piano Mode
+- 24-key virtual piano
+- Visual feedback on key press
+- Playable via mouse and keyboard
+- Record, playback, and download your piano tunes
 
-## Expanding the ESLint configuration
+### 🥁 Drum Mode
+- Set of interactive drum pads
+- Visual feedback on hit
+- Play using mouse clicks or keyboard
+- Record your beats, playback and download
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### 🔁 Universal Features
+- 🎤 Start/Stop Recording
+- ▶️ Playback recorded audio
+- 💾 Download your recording
+- 🔄 Switch between Piano and Drum modes via the icon at the top right
+
+## 📋 How to Use
+
+### 🎹 Piano Instructions
+1. Use mouse clicks or keyboard keys to play notes.
+2. Click **Start Recording** to begin recording your tune.
+3. Click **Stop Recording** when finished.
+4. Press **Playback** to listen to your recording.
+5. Click **Download** to save your tune as a file.
+6. Use the **Drum icon** in the top right corner to switch to Drum Kit.
+
+### 🥁 Drum Kit Instructions
+1. Use mouse clicks or keyboard keys to play drum sounds.
+2. Click **Start Recording** to begin recording your beat.
+3. Click **Stop Recording** when finished.
+4. Press **Playback** to listen to your rhythm.
+5. Click **Download** to save your beat as a file.
+6. Use the **Piano icon** in the top right corner to switch to Piano.
