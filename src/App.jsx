@@ -12,7 +12,7 @@ function App() {
     onClick={()=>{activeLayout==='piano'? setActiveLayout('drum'): setActiveLayout('piano')}}
     
     >
-        <img className='w-6 h-6' src={`${activeLayout==='piano'? './src/assets/drum-svgrepo-com.svg': './src/assets/piano-svgrepo-com.svg'}`} alt="" />
+        <img className='w-6 h-6' src={`${activeLayout==='piano'? '/drum-svgrepo-com.svg': '/piano-svgrepo-com.svg'}`} alt="" />
     </button>
 
      <div>
