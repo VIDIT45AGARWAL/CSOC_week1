@@ -13,7 +13,7 @@ const Bgeffect = ({darkMode}) => {
           <div className='flex-1 space-y-6 lg:space-y-7'>
             {/*  */}
             <div className='flex flex-col items-center xl:items-start xl:flex-row space-y-4 lg:space-y-5'>
-                <div className='flex flex-col items-center xl:block'>
+                <div className='animated-div1 flex flex-col items-center xl:block'>
                   <h1 className='text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-center xl:text-left font-extrabold tracking-tight text-neutral-900 dark:text-white'>
                   <span className='block mb-1'>Virtual</span>
                   <span className='bg-clip-text text-transparent bg-gradient-to-r from-amber-500 via-amber-400 to-amber-600'>Piano </span>
@@ -40,7 +40,7 @@ const Bgeffect = ({darkMode}) => {
                     </div>
                     <div>
                       <p className='text-neutral-700 dark:text-neutral-200 color-transition'>
-                        For darkmode use the button at the top corner
+                        To record your tune use the Start Recording button and then play your tune, when you are done Stop the recording and you can listen to your recorded tune using the Playback button. For download of the playback click on the download button
                       </p>
                     </div>
                   </div>
@@ -50,14 +50,14 @@ const Bgeffect = ({darkMode}) => {
                     </div>
                     <div>
                       <p className='text-neutral-700 dark:text-neutral-200 color-transition'>
-                        To record your tune use the Start Recording button and then play your tune, when you are done Stop the recording and you can listen to your recorded tune using the Playback button
+                        To switch to Drum click on Drum icon on top right corver
                       </p>
                     </div>
                   </div>
                 </div>
                 </div>   
                 
-                  <div className='flex flex-col relative bg-white dark:bg-neutral-900 h-150 w-100 sm:w-120 md:w-180 gb:w-220 xl:ml-50 border-8 border-transparent shadow-[0_0_40px_6px_rgba(251,191,36,0.8)] rounded-2xl' >
+                  <div className='animated-div2 flex flex-col relative bg-white dark:bg-neutral-900 h-150 w-100 sm:w-120 md:w-180 gb:w-220 xl:ml-50 border-8 border-transparent shadow-[0_0_40px_6px_rgba(251,191,36,0.8)] rounded-2xl' >
                     <Piano darkMode={darkMode}/> 
                   </div>
             </div>

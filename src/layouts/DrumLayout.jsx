@@ -3,7 +3,7 @@ import Bgeffect2 from '../components/Bgeffect2'
 
 const DrumLayout = () => {
 
-  const [darkMode, setDarkMode] = useState(false)
+  const [darkMode, setDarkMode] = useState(true)
 
   useEffect(()=> {
     if(darkMode){

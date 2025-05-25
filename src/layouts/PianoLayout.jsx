@@ -3,7 +3,7 @@ import Bgeffect from '../components/Bgeffect'
 
 const PianoLayout = () => {
 
-  const [darkMode, setDarkMode] = useState(false)
+  const [darkMode, setDarkMode] = useState(true)
 
   useEffect(()=> {
     if(darkMode){
@@ -27,6 +27,7 @@ const PianoLayout = () => {
           <div className='absolute inset-0 dark:block' style={{backgroundImage : 'radial-gradient(rgba(255,255,255,0.13) 1px, transparent 1px', backgroundSize: '20px 20px',}}>
           </div>
         </div>
+        
         <button onClick={toggleDarkMode} className='fixed top-3 lg:top-4 right-3 lg:right-4 w-9 h-9 lg:w-10 lg:h-10 flex justify-center items-center rounded-full bg-amber-500 text-gray-600 shadow-lg hover:bg-amber-600 transition-colors cursor-pointer z-10'>
             <i className={`bx bx-${darkMode ? 'sun' : 'moon'} text-lg lg:text-xl`}></i>
         </button>
